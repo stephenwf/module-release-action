@@ -18,7 +18,7 @@ number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 IS_DEBUG_MODE_ENABLED=${MODULE_RELEASE_DEBUG:-false}  # If variable not set or null, use default.
 
 
-if [[ "$IS_DEBUG_MODE_ENABLED" = false ]]; then
+if [[ "$IS_DEBUG_MODE_ENABLED" != false ]]; then
     debugEventPath=$(jq "$GITHUB_EVENT_PATH")
 
     echo " DEBUG: Pull request number $number";
