@@ -19,7 +19,7 @@ IS_DEBUG_MODE_ENABLED=${MODULE_RELEASE_DEBUG:-false}  # If variable not set or n
 
 
 if [[ "$IS_DEBUG_MODE_ENABLED" != false ]]; then
-    debugEventPath=$(jq "$GITHUB_EVENT_PATH")
+    debugEventPath=$(jq "." "$GITHUB_EVENT_PATH")
 
     echo " DEBUG: Pull request number $number";
     echo " DEBUG: Github event path $debugEventPath"
