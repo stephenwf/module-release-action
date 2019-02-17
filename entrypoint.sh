@@ -40,14 +40,14 @@ fi;
 
 echo "//registry.npmjs.org/:_authToken=${NPM_AUTH}" >> ~/.npmrc
 
-if [[ "$GITHUB_REF" = "refs/heads/master" ]] && [[ "$GH_PR_NUMBER" = "null" ]]; then
-    echo "======================================================";
-    echo "  Deploying a canary release";
-    echo "======================================================";
-    if [[ "$IS_DEBUG_MODE_ENABLED" = false ]]; then
-        fesk-release --next --yes
-    fi;
-fi;
+#if [[ "$GITHUB_REF" = "refs/heads/master" ]] && [[ "$GH_PR_NUMBER" = "null" ]]; then
+#    echo "======================================================";
+#    echo "  Deploying a canary release";
+#    echo "======================================================";
+#    if [[ "$IS_DEBUG_MODE_ENABLED" = false ]]; then
+#        fesk-release --next --yes
+#    fi;
+#fi;
 
 #if [[ "${TRAVIS_TAG}" != "" ]]; then
 #    echo "DEPLOYING A LATEST RELEASE $TRAVIS_TAG";
