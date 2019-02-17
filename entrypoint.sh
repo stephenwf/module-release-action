@@ -15,6 +15,10 @@ fi
 GH_ACTION=$(jq --raw-output .action "$GITHUB_EVENT_PATH")
 GH_PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 
+if [[ "$IS_DEBUG_MODE_ENABLED" != false ]]; then
+    echo "Github action is: $GH_ACTION";
+fi;
+
 if [[ GH_ACTION != "synchronized" ]]; then
     echo "Not required unless there is new code.";
     exit 0;
