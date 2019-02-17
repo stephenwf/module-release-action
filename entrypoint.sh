@@ -19,7 +19,7 @@ if [[ "$IS_DEBUG_MODE_ENABLED" != false ]]; then
     echo "Github action is: $GH_ACTION";
 fi;
 
-if [[ GH_ACTION != "synchronized" ]]; then
+if [[ GH_ACTION != "synchronize" ]]; then
     echo "Not required unless there is new code.";
     exit 0;
 fi;
