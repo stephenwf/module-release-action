@@ -14,11 +14,20 @@ fi
 
 number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 
+
 IS_DEBUG_MODE_ENABLED=${MODULE_RELEASE_DEBUG:-false}  # If variable not set or null, use default.
+
+
+if [[ "$IS_DEBUG_MODE_ENABLED" = false ]]; then
+    debugEventPath=$(jq "$GITHUB_EVENT_PATH")
+
+    echo " DEBUG: Pull request number $number";
+    echo " DEBUG: Github event path $debugEventPath"
+fi;
 
 echo "//registry.npmjs.org/:_authToken=${NPM_AUTH}" >> ~/.npmrc
 
-if [[ "$GITHUB_REF" = "refs/heads/master" ]] && [[ "$number" = "" ]]; then
+if [[ "$GITHUB_REF" = "refs/heads/master" ]] && [[ "$number" = "null" ]]; then
     echo "======================================================";
     echo "  Deploying a canary release";
     echo "======================================================";
@@ -35,7 +44,7 @@ fi;
 #fi;
 
 
-if [[ "$number" != "" ]]; then
+if [[ "$number" != "null" ]]; then
     echo "======================================================";
     echo "  Deploying pull request number: $number";
     echo "======================================================";
