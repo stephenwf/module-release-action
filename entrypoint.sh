@@ -20,6 +20,10 @@ if [[ GH_ACTION != "synchronized" ]]; then
     exit 0;
 fi;
 
+# First we need to run yarn, to get the workspaces installed.
+# Maybe this can be behind configuration later.
+yarn install
+
 IS_DEBUG_MODE_ENABLED=${MODULE_RELEASE_DEBUG:-false}  # If variable not set or null, use default.
 
 
