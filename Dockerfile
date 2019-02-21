@@ -12,7 +12,7 @@ LABEL com.github.actions.color="red"
 
 RUN npm install -g @fesk/module-release
 
-RUN wget "http://stedolan.github.io/jq/download/linux64/jq" -O /bin/jq && chmod 755 jq
+RUN wget "http://stedolan.github.io/jq/download/linux64/jq" -O /bin/jq && chmod 755 /bin/jq
 
 COPY "entrypoint.sh" "/entrypoint.sh"
 ENTRYPOINT ["/entrypoint.sh"]
